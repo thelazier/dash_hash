@@ -24,9 +24,9 @@ clone_depth: 5
 init:
 - 'SET PATH=%PYTHON%;%PYTHON%\Scripts;%PATH%'
 - if not %platform%==mingw call "C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\vcvarsall.bat" %platform%
-- python -m pip install -v pip --upgrade
-- python -m pip install -v setuptools --upgrade
-- python -m pip install -v wheel --upgrade
+- python -m pip install pip --upgrade
+- python -m pip install setuptools --upgrade
+- python -m pip install wheel --upgrade
 
 install:
 - python setup.py install
@@ -40,7 +40,6 @@ after_test:
 - python setup.py bdist_wheel
 - python setup.py bdist_wininst
 - python setup.py bdist_msi
-- ps: "ls dist"
 
 artifacts:
 - path: dist\*
