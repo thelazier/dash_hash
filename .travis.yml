@@ -1,12 +1,22 @@
 #
 sudo: false
 language: python
-python: 2.7
-
-cache: false
+python: 
+  - "2.7"
+  - "3.3"
+  - "3.4"
+  - "3.5"
 
 install:
-  - pip install .
+  - pip install setuptools --upgrade
+  - pip install wheel --upgrade
+  - python setup.py install
 
 script:
   - python test.py
+
+after_success:
+  - python setup.py bdist_wheel
+
+matrix:
+  fast_finish: true
